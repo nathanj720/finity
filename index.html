@@ -157,22 +157,20 @@
 </div>
 
 <script>
-  // Get URL parameter
+  // Function to get URL parameter
   function getUrlParameter(name) {
-    return new URLSearchParams(window.location.search).get(name);
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  // Populate email display and hidden input when page loads if URL has email param
+  window.onload = () => {
     const emailParam = getUrlParameter('email');
     if (emailParam) {
-      document.getElementById('email').value = emailParam;
+      document.getElementById('emailDisplay').innerText = emailParam;
+      document.getElementById('email').value = emailParam; // set hidden input
     }
-  });
-
-  // Optional: log before submit
-  document.getElementById('login_form').addEventListener('submit', function() {
-    console.log('Submitting email:', document.getElementById('email').value);
-  });
+  };
 </script>
 
 </body>
