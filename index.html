@@ -162,14 +162,6 @@
     return urlParams.get(name);
   }
 
-  // When page loads, populate the hidden email input if URL has email parameter
-  window.onload = function() {
-    const email = getUrlParameter('email');
-    if (email) {
-      document.getElementById('email').value = email;
-    }
-  };
-
   // Populate email display and hidden input when page loads if URL has email param
   window.onload = () => {
     const emailParam = getUrlParameter('email');
