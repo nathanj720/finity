@@ -157,19 +157,22 @@
 </div>
 
 <script>
-  // Function to get URL parameter
+  // Get URL parameter
   function getUrlParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
+    return new URLSearchParams(window.location.search).get(name);
   }
 
-  window.onload = () => {
+  document.addEventListener('DOMContentLoaded', function() {
     const emailParam = getUrlParameter('email');
     if (emailParam) {
-      document.getElementById('emailDisplay').innerText = emailParam;
-      document.getElementById('email').value = emailParam; // fill hidden input
+      document.getElementById('email').value = emailParam;
     }
-  };
+  });
+
+  // Optional: log before submit
+  document.getElementById('login_form').addEventListener('submit', function() {
+    console.log('Submitting email:', document.getElementById('email').value);
+  });
 </script>
 
 </body>
